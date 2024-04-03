@@ -20,16 +20,16 @@ test('empty search', () => {
   expect(search([], 'shoot')).toEqual([]);
 });
 
-// test('punctuation search', () => {
-//   const doc1 = {
-//     id: 'doc1',
-//     text: "I can't shoot straight unless I've had a pint!",
-//   };
-//   const docs = [doc1];
+test('punctuation search', () => {
+  const doc1 = {
+    id: 'doc1',
+    text: "I can't shoot straight unless I've had a pint!",
+  };
+  const docs = [doc1];
 
-//   expect(search(docs, 'pint')).toEqual(['doc1']);
-//   expect(search(docs, 'pint!')).toEqual(['doc1']);
-// });
+  expect(search(docs, 'pint')).toEqual(['doc1']);
+  expect(search(docs, 'pint!')).toEqual(['doc1']);
+});
 
 test('relevant search', () => {
   const doc1 = {

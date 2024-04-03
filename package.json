@@ -2,9 +2,7 @@
   "name": "@hexlet/nodejs-package",
   "version": "0.0.3",
   "description": "Node.js boilerplate package",
-  "bin": {
-    "nodejs-package": "bin/nodejs-package.js"
-  },
+  "main": "src/index.js",
   "simple-git-hooks": {
     "pre-push": "make lint"
   },

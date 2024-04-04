@@ -28,11 +28,7 @@ const buildWordInfo = (documents) => documents.reduce((acc, document) => {
   return { ...acc, [documentId]: currentWordData };
 }, {});
 
-const searchDocs = (searchStr2, wordsInfo) => {
-  if (!searchStr2) return [];
-  const searchWords = normalizeString(searchStr2);
-  const wordsCount = Object.values(wordsInfo).length;
-
+const calculateTfIdf = (wordsInfo, wordsCount) => {
   const result = {};
 
   Object.entries(wordsInfo).forEach(([, documentInfo]) => {
@@ -47,6 +43,16 @@ const searchDocs = (searchStr2, wordsInfo) => {
       });
     });
   });
+
+  return result;
+};
+
+const searchDocs = (searchStr2, wordsInfo) => {
+  if (!searchStr2) return [];
+  const searchWords = normalizeString(searchStr2);
+  const wordsCount = Object.values(wordsInfo).length;
+
+  const result = calculateTfIdf(wordsInfo, wordsCount);
 
   Object.entries(result).forEach(([word, docInfo]) => {
     result[word] = docInfo.sort((a, b) => a.tfIdf - b.tfIdf);

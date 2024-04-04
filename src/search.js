@@ -6,7 +6,8 @@ const wordsInCollection = {};
 
 const normalizeString = (str) => str.toLowerCase().match(/\w+/g);
 
-const buildWordInfo = (documents) => documents.reduce((acc, { id: documentId, text: documentText }) => {
+const buildWordInfo = (documents) => documents.reduce((acc, document) => {
+  const { id: documentId, text: documentText } = document;
   const documentWords = normalizeString(documentText);
   const currentWordData = {};
 

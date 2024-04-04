@@ -34,11 +34,8 @@ export default (docs, searchStr) => {
 
     const result = {};
 
-
     Object.entries(index).forEach(([, documentInfo]) => {
-      // console.log(documentInfo, 'documentInfo');
       Object.entries(documentInfo).forEach(([word, wordInfo]) => {
-        // console.log(word, wordInfo, 'word');
         if (!result[word]) {
           result[word] = [];
         }

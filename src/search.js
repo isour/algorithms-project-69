@@ -28,6 +28,7 @@ export default (docs, searchStr) => {
   }, {});
 
   const searchDocs = (searchStr2, reverseIndex) => {
+    if (!searchStr2) return [];
     const searchWords = searchStr2.toLowerCase().match(/\w+/g);
     const wordsCount = Object.values(reverseIndex).length;
 

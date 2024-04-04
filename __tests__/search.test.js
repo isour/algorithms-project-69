@@ -1,5 +1,5 @@
 import { test, expect } from '@jest/globals';
-import search from '../index.js';
+import search from '../src/index.js';
 
 test('base search', () => {
   const doc1 = {
@@ -18,6 +18,7 @@ test('base search', () => {
 
 test('empty search', () => {
   expect(search([], 'shoot')).toEqual([]);
+  expect(search([], '')).toHaveLength(0);
 });
 
 test('punctuation search', () => {

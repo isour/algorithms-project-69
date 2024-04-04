@@ -34,8 +34,11 @@ export default (docs, searchStr) => {
 
     const result = {};
 
+
     Object.entries(index).forEach(([, documentInfo]) => {
+      // console.log(documentInfo, 'documentInfo');
       Object.entries(documentInfo).forEach(([word, wordInfo]) => {
+        // console.log(word, wordInfo, 'word');
         if (!result[word]) {
           result[word] = [];
         }
@@ -59,9 +62,20 @@ export default (docs, searchStr) => {
 
     if (!result[searchWords[0]]) return [];
 
+    console.log(result, searchWords, 'searchWords');
+
     return [
       ...new Set(
-        searchWords.reduce((acc, word) => [...acc, ...result[word]], []),
+        searchWords.reduce((acc, word) => {
+          let newAcc = [...acc];
+          if (result[word]) {
+            newAcc = [
+              ...newAcc,
+              ...result[word],
+            ];
+          }
+          return newAcc;
+        }, []),
       ),
     ];
   };
